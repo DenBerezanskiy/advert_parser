@@ -1,19 +1,24 @@
 package ua.dp.advert_parser.entity;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * Created by Denis Berezanskiy on 12.03.2018.
  */
+@Entity
+@Table(name = "adverts")
 public class Advert
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(unique = true)
     private String url;
     private String title;
     //price is String variable because it displaying like a String value in html page.
     private String price;
     private String description;
-
     public Advert() {
     }
 

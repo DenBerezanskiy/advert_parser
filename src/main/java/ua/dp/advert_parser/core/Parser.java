@@ -11,8 +11,8 @@ import ua.dp.advert_parser.entity.Advert;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Denis Berezanskiy on 12.03.2018.
@@ -25,11 +25,12 @@ public class Parser {
          * @param url - prepared url with selected parameters of search
          * @return List of adverts links
          */
-        public List parsePage(String url)
+        public Set parsePage(String url)
         {
-            List<String> links = new ArrayList<>();
+            Set<String> links = new HashSet<String>();
             try
             {
+
                 SAXParserImpl.newInstance(null).parse(
                         new URL(url).openConnection().getInputStream(),
                         new DefaultHandler()
@@ -39,7 +40,7 @@ public class Parser {
                             {
                                 if (name.equalsIgnoreCase("a") && a != null && a.getValue("class") != null &&
                                         a.getValue("class").contains("detailsLink"))
-                                    links.add(a.getValue("href"));
+                                    links.add(a.getValue("href").split("#")[0]);
                             }
                         }
                 );
@@ -73,8 +74,13 @@ public class Parser {
                 advert.setPrice(elements.text());
                 //Getting description
                 elements = document.getElementsByAttributeValue("class" , "clr");
-                //TODO : unhardcode
-                advert.setDescription(elements.get(1).getElementsByAttributeValue("class" , "pding10 lheight20 large").text());
+                //TODO : unhardcode PS. cutting the description by length is very wrong solution!!!
+                String description = elements.get(1).getElementsByAttributeValue("class" , "pding10 lheight20 large").text();
+                if(description.length()>255)
+                {
+                    description = description.substring(0,254);
+                }
+                advert.setDescription(description);
 
             } catch (IOException e)
             {

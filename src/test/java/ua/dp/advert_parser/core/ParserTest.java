@@ -6,6 +6,7 @@ import org.junit.Test;
 import ua.dp.advert_parser.entity.Advert;
 
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.*;
 
@@ -25,7 +26,7 @@ public class ParserTest {
 
     @Test
     public void parsePageTest() throws Exception {
-        List<String> urls = parser.parsePage(urlExample);
+        Set<String> urls = parser.parsePage(urlExample);
         assertTrue("Parser did not find any advertisement.", urls.size() > 0);
         //TODO: Add more tests
 
@@ -33,8 +34,9 @@ public class ParserTest {
     }
 
     @Test
+
     public void parseAdvert() throws Exception {
-        List<String> urls = parser.parsePage(urlExample);
+        Set<String> urls = parser.parsePage(urlExample);
         for (String url:urls)
         {
             Advert advert = parser.parseAdvert(url);
