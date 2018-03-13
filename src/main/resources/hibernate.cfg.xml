@@ -12,6 +12,7 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
 
-        <mapping class="ua.dp.advert_parser.entity.Advert" />
+        <mapping class="ua.dp.advert_parser.dao.entity.Advert" />
+        <mapping class="ua.dp.advert_parser.dao.entity.Search"/>
     </session-factory>
 </hibernate-configuration>

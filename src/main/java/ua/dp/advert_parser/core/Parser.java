@@ -7,7 +7,8 @@ import org.jsoup.select.Elements;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-import ua.dp.advert_parser.entity.Advert;
+import ua.dp.advert_parser.dao.entity.Advert;
+import ua.dp.advert_parser.dao.entity.Search;
 
 import java.io.IOException;
 import java.net.URL;
@@ -58,7 +59,7 @@ public class Parser {
          * @param link - reference of Advert
          * @return an advert with inserted parameters in it
          */
-        public Advert parseAdvert(String link)
+        public Advert parseAdvert(Search search , String link)
         {
             advert = new Advert();
             advert.setUrl(link);
@@ -81,6 +82,7 @@ public class Parser {
                     description = description.substring(0,254);
                 }
                 advert.setDescription(description);
+                advert.setSearch(search);
 
             } catch (IOException e)
             {

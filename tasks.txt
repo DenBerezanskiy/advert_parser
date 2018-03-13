@@ -1,0 +1,7 @@
+/* General todo list :
+//TODO : Logging
+//firstly : Checking if advert already exists in db
+//TODO : implement dao methods like save() and get()
+//TODO : Main app with invoking parser and bot
+//TODO : Front-End part with registration of users and using search parameters
+//TODO : Declining access of non-registered users to bot.

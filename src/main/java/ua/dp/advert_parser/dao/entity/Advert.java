@@ -1,7 +1,6 @@
-package ua.dp.advert_parser.entity;
+package ua.dp.advert_parser.dao.entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
  * Created by Denis Berezanskiy on 12.03.2018.
@@ -19,14 +18,28 @@ public class Advert
     //price is String variable because it displaying like a String value in html page.
     private String price;
     private String description;
+    @Embedded
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "search_id")
+    private Search search;
     public Advert() {
     }
 
-    public Advert(String url, String title, String price, String description) {
+    public Advert(String url, String title, String price, String description, Search search) {
         this.url = url;
         this.title = title;
         this.price = price;
         this.description = description;
+        this.search = search;
+    }
+
+
+    public Search getSearch() {
+        return search;
+    }
+
+    public void setSearch(Search search) {
+        this.search = search;
     }
 
     public String getUrl() {

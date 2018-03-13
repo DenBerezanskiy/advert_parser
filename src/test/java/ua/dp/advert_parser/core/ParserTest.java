@@ -1,11 +1,10 @@
 package ua.dp.advert_parser.core;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import ua.dp.advert_parser.entity.Advert;
+import ua.dp.advert_parser.dao.entity.Advert;
+import ua.dp.advert_parser.dao.entity.Search;
 
-import java.util.List;
 import java.util.Set;
 
 import static org.junit.Assert.*;
@@ -17,11 +16,13 @@ public class ParserTest {
 
     private String urlExample;
     private Parser parser;
+    private Search search;
 
     @Before
     public void before() {
         urlExample = "https://www.olx.ua/nedvizhimost/kvartiry-komnaty/dnepr/";
         parser = new Parser();
+        search = new Search(urlExample);
     }
 
     @Test
@@ -39,7 +40,7 @@ public class ParserTest {
         Set<String> urls = parser.parsePage(urlExample);
         for (String url:urls)
         {
-            Advert advert = parser.parseAdvert(url);
+            Advert advert = parser.parseAdvert(search,url);
             assertNotNull(advert);
             System.out.println(advert);
             assertFalse("url is null",advert.getUrl()== null);
