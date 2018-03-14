@@ -2,6 +2,7 @@ package ua.dp.advert_parser.core;
 
 import org.ccil.cowan.tagsoup.jaxp.SAXParserImpl;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Attribute;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.xml.sax.Attributes;
@@ -10,7 +11,9 @@ import org.xml.sax.helpers.DefaultHandler;
 import ua.dp.advert_parser.dao.entity.Advert;
 import ua.dp.advert_parser.dao.entity.Search;
 
+import javax.persistence.Table;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.Set;
@@ -59,10 +62,12 @@ public class Parser {
          * @param link - reference of Advert
          * @return an advert with inserted parameters in it
          */
-        public Advert parseAdvert(Search search , String link)
-        {
+        public Advert parseAdvert(Search search , String link) {
             advert = new Advert();
             advert.setUrl(link);
+            advert.setSearch(search);
+
+
             try
             {
                 Document document = Jsoup.connect(link).get();
@@ -82,7 +87,7 @@ public class Parser {
                     description = description.substring(0,254);
                 }
                 advert.setDescription(description);
-                advert.setSearch(search);
+
 
             } catch (IOException e)
             {
@@ -93,7 +98,10 @@ public class Parser {
                 System.out.println("something goes wrong!!!");
             }
             return advert;
+
+
         }
+
 
         public void setAdvert(Advert Advert) {
             advert = Advert;
