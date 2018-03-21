@@ -2,7 +2,6 @@ package ua.dp.advert_parser.core;
 
 import org.ccil.cowan.tagsoup.jaxp.SAXParserImpl;
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Attribute;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.xml.sax.Attributes;
@@ -10,10 +9,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 import ua.dp.advert_parser.dao.entity.Advert;
 import ua.dp.advert_parser.dao.entity.Search;
-
-import javax.persistence.Table;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.Set;
@@ -60,6 +56,7 @@ public class Parser {
         /**
          *  Following method is obtain advert parameters like title , price ,description and link
          * @param link - reference of Advert
+         * @param search - one of the links returned by the oarsePage() method
          * @return an advert with inserted parameters in it
          */
         public Advert parseAdvert(Search search , String link) {
@@ -67,29 +64,21 @@ public class Parser {
             advert.setUrl(link);
             advert.setSearch(search);
 
+            Document document = null;
+            try {
+                document = Jsoup.connect(link).get();
 
-            try
-            {
-                Document document = Jsoup.connect(link).get();
                 //Getting title
                 Elements elements = document.getElementsByAttributeValue("class" , "offer-titlebox");
-                //TODO : unhardcode
                 advert.setTitle(elements.get(0).child(0).text());
                 //Getting price
                 elements = document.getElementsByAttributeValue("class", "price-label");
-                advert.setPrice(elements.text());
+                advert.setPrice(elements.get(0).child(0).text());
                 //Getting description
-                elements = document.getElementsByAttributeValue("class" , "clr");
-                //TODO : unhardcode PS. cutting the description by length is very wrong solution!!!
-                String description = elements.get(1).getElementsByAttributeValue("class" , "pding10 lheight20 large").text();
-                if(description.length()>255)
-                {
-                    description = description.substring(0,254);
-                }
-                advert.setDescription(description);
-
-
-            } catch (IOException e)
+                elements = document.getElementsByAttributeValue("id" , "textContent");
+                advert.setDescription(elements.get(0).child(0).text());
+            }
+            catch (IOException e)
             {
                 e.printStackTrace();
             }
@@ -98,7 +87,6 @@ public class Parser {
                 System.out.println("something goes wrong!!!");
             }
             return advert;
-
 
         }
 

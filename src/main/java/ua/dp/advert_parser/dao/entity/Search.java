@@ -38,4 +38,12 @@ public class Search {
     public void setSearchLink(String searchLink) {
         this.searchLink = searchLink;
     }
+
+    @Override
+    public String toString() {
+        return "Search{" +
+                "searchLink='" + searchLink + '\'' +
+                ", timestamp=" + timestamp +
+                '}';
+    }
 }
