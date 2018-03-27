@@ -35,10 +35,10 @@ public class Application {
 
         searchLink = "https://www.olx.ua/transport/legkovye-avtomobili/dnepr/";
 
-            application.run(searchLink);
+            application.findAdverts(searchLink);
     }
     @Transactional
-    public void run(String searchLink)
+    public void findAdverts(String searchLink)
     {
         advert = new Advert();
         Search search = new Search(searchLink);
