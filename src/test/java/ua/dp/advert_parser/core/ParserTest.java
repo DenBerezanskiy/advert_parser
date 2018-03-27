@@ -1,5 +1,7 @@
 package ua.dp.advert_parser.core;
 
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.junit.Before;
 import org.junit.Test;
 import ua.dp.advert_parser.dao.entity.Advert;
@@ -27,8 +29,8 @@ public class ParserTest {
 
     @Test
     public void parsePageTest() throws Exception {
-        Set<String> urls = parser.parsePage(urlExample);
-        assertTrue("Parser did not find any advertisement.", urls.size() > 0);
+        Elements elements = parser.parsePage(urlExample);
+        assertFalse("Parser did not find any advertisement.", elements.size() == 0);
         //TODO: Add more tests
 
 
@@ -37,16 +39,15 @@ public class ParserTest {
     @Test
 
     public void parseAdvert() throws Exception {
-        Set<String> urls = parser.parsePage(urlExample);
-        for (String url:urls)
+        Elements elements = parser.parsePage(urlExample);
+        for (Element element:elements)
         {
-            Advert advert = parser.parseAdvert(search,url);
+            Advert advert = parser.parseAdvert(element,search);
             assertNotNull(advert);
             System.out.println(advert);
             assertFalse("url is null",advert.getUrl()== null);
             assertFalse("title is null" ,advert.getTitle()== null );
             assertFalse("price is null" , advert.getPrice()== null);
-            assertFalse("description is null" , advert.getDescription() == null);
         }
 
 

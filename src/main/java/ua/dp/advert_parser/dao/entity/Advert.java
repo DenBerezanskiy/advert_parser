@@ -17,8 +17,6 @@ public class Advert
     private String title;
     //price is String variable because it displaying like a String value in html page.
     private String price;
-    @Column(columnDefinition = "TEXT")
-    private String description;
     @Embedded
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "search_id")
@@ -28,11 +26,11 @@ public class Advert
     public Advert() {
     }
 
-    public Advert(String url, String title, String price, String description, Search search,int sent) {
+    public Advert(String url, String title, String price, Search search,int sent) {
         this.url = url;
         this.title = title;
         this.price = price;
-        this.description = description;
+
         this.search = search;
         this.sent = sent;
     }
@@ -70,14 +68,6 @@ public class Advert
         this.price = price;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public int getSent() {
         return sent;
     }
@@ -92,7 +82,6 @@ public class Advert
                 " url='" + url + '\'' + "\n" +
                 ", title='" + title + '\'' + "\n" +
                 ", price='" + price + '\'' + "\n" +
-                ", description='" + description + '\'' + "\n" +
                 ", search=" + search + "\n" +
                 '}';
     }
