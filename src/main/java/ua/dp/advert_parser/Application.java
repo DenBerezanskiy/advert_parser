@@ -10,6 +10,8 @@ import ua.dp.advert_parser.dao.entity.Search;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import java.util.List;
 
 
 /**
@@ -45,8 +47,15 @@ public class Application {
         {
           advert = parser.parseAdvert(element,search);
 
-            System.out.println(advert);
-            entityManager.persist(advert);
+            Query checkUniquenessQuery = entityManager.createQuery("from Advert where url = :link");
+            checkUniquenessQuery.setParameter("link", advert.getUrl());
+
+            List resultList = checkUniquenessQuery.getResultList();
+
+            if (resultList.size() == 0 && resultList != null) {
+                System.out.println(advert);
+                entityManager.persist(advert);
+            }
         }
     }
     public void setParser(Parser Parser) {
