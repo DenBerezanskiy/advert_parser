@@ -30,7 +30,6 @@ public class Advert
         this.url = url;
         this.title = title;
         this.price = price;
-
         this.search = search;
         this.sent = sent;
     }

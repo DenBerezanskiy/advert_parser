@@ -49,10 +49,14 @@ public class Parser {
                 advert.setPrice(price);
             }
         }
-        if (advert.getTitle() != null && advert.getPrice() != null & advert.getUrl() != null) {
             return advert;
-        } else {
-            return null;
-        }
+    }
+
+    public void setAdvert(Advert Advert) {
+        advert = Advert;
+    }
+
+    public Advert getAdvert() {
+        return advert;
     }
 }
