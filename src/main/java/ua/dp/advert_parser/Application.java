@@ -1,8 +1,6 @@
 package ua.dp.advert_parser;
 
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import ua.dp.advert_parser.core.Service;
@@ -10,6 +8,7 @@ import ua.dp.advert_parser.core.Service;
 /**
  * Created by Denis Berezanskiy on 27.03.2018.
  */
+
 
 @EnableScheduling
 public class Application {
@@ -26,6 +25,11 @@ public class Application {
 
                 application.service.findAdverts();
                 application.service.sendAdverts();
+
+                //TODO : Next step is implementing of Spring MVC principles
+                //TODO : and front-end part
+                //TODO : Implement Logger
+
     }
 
 
