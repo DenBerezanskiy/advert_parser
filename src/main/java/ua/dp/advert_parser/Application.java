@@ -1,29 +1,20 @@
 package ua.dp.advert_parser;
 
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.transaction.annotation.Transactional;
-import ua.dp.advert_parser.core.Parser;
-import ua.dp.advert_parser.dao.entity.Advert;
-import ua.dp.advert_parser.dao.entity.Search;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import java.util.List;
-
+import org.springframework.scheduling.annotation.EnableScheduling;
+import ua.dp.advert_parser.core.Service;
 
 /**
  * Created by Denis Berezanskiy on 27.03.2018.
  */
 
+@EnableScheduling
 public class Application {
-    private Parser parser;
-    private static String searchLink;
-    private Advert advert;
-    @PersistenceContext
-    private EntityManager entityManager;
+
+    private Service service;
 
     public static void main(String[] args) {
         System.out.println("Start");
@@ -31,43 +22,17 @@ public class Application {
                 new ClassPathXmlApplicationContext("applicationContext.xml");
         System.out.println("Context initialised");
         Application application =
-                (Application)context.getBean("application");
-
-        searchLink = "https://www.olx.ua/transport/legkovye-avtomobili/dnepr/";
-
-            application.findAdverts(searchLink);
+                (Application) context.getBean("application");
+                application.service.findAdverts("https://www.olx.ua/nedvizhimost/kvartiry-komnaty/dnepr/");
+                application.service.sendAdverts();
     }
-    @Transactional
-    public void findAdverts(String searchLink)
-    {
-        advert = new Advert();
-        Search search = new Search(searchLink);
-        Elements elements = parser.parsePage(searchLink);
-        for(Element element:elements)
-        {
-          advert = parser.parseAdvert(element,search);
 
-            Query checkUniquenessQuery = entityManager.createQuery("from Advert where url = :link");
-            checkUniquenessQuery.setParameter("link", advert.getUrl());
 
-            List resultList = checkUniquenessQuery.getResultList();
+    public void setService(Service service) {
+        this.service = service;
+    }
 
-            if (resultList.size() == 0 && resultList != null) {
-                System.out.println(advert);
-                entityManager.persist(advert);
-            }
-        }
-    }
-    public void setParser(Parser Parser) {
-        parser = Parser;
-    }
-    public Parser getParser() {
-        return parser;
-    }
-    public void setAdvert(Advert advert) {
-        this.advert = advert;
-    }
-    public Advert getAdvert() {
-        return advert;
+    public Service getService() {
+        return service;
     }
 }
