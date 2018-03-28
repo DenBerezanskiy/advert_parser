@@ -23,7 +23,8 @@ public class Application {
         System.out.println("Context initialised");
         Application application =
                 (Application) context.getBean("application");
-                application.service.findAdverts("https://www.olx.ua/nedvizhimost/kvartiry-komnaty/dnepr/");
+
+                application.service.findAdverts();
                 application.service.sendAdverts();
     }
 

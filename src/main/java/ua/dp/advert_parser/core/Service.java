@@ -1,5 +1,6 @@
 package ua.dp.advert_parser.core;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +14,7 @@ import ua.dp.advert_parser.dao.entity.Search;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -27,30 +29,48 @@ public class Service
     @PersistenceContext
     private EntityManager entityManager;
 
-
-
-
+    @Scheduled(fixedRate = 30000)
     @Transactional
-    public void findAdverts(String searchLink)
+    public void findAdverts()
     {
+        String searchLink = "https://www.olx.ua/nedvizhimost/kvartiry-komnaty/dnepr/";
         advert = new Advert();
-        Search search = new Search(searchLink);
+        Search search = null;
+        Query checkUniquenessQuery = entityManager.createQuery("from Search where searchLink = '"+searchLink+"'");
+        List resultList = checkUniquenessQuery.getResultList();
+        if(resultList.size() != 0)
+        {
+            search = (Search)resultList.get(0);
+        }
+        else
+        {
+            search = new Search(searchLink);
+            entityManager.persist(search);
+        }
         Elements elements = parser.parsePage(searchLink);
 
         for(Element element:elements)
         {
             advert = parser.parseAdvert(element,search);
 
-            Query checkUniquenessQuery = entityManager.createQuery("from Advert where url = :link");
+             checkUniquenessQuery = entityManager.createQuery("from Advert where url = :link");
             checkUniquenessQuery.setParameter("link", advert.getUrl());
 
-            List resultList = checkUniquenessQuery.getResultList();
+             resultList = checkUniquenessQuery.getResultList();
 
             if (resultList.size() == 0 && resultList != null) {
-                System.out.println(advert);
-                entityManager.persist(advert);
+
+
+                    if(advert.getUrl() != null && advert.getTitle() != null && advert.getPrice() != null)
+                    {
+                        System.out.println(advert);
+                        entityManager.persist(advert);
+                    }
+
+
             }
         }
+        System.out.println("findAdverts() method executed at :" + new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(new Date()));
     }
     @Scheduled(fixedRate = 30000)
     @Transactional
@@ -64,8 +84,7 @@ public class Service
             entityManager.createQuery("update Advert set sent = 1 where url = '"+advert.getUrl()+"'").executeUpdate();
 
         }
-
-        System.out.println("Method executed at :" + new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(new Date()));
+        System.out.println("sendAdverts() method executed at :" + new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(new Date()));
     }
     public void setParser(Parser parser) {
         this.parser = parser;
