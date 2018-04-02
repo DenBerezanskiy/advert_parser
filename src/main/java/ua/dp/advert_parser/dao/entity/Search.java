@@ -17,30 +17,35 @@ public class Search {
     private String searchLink;
     private Timestamp timestamp;
 
-    public Search(){}
-    public Search(String searchLink) {
+    public Search(String searchLink)
+    {
         this.searchLink = searchLink;
         this.timestamp = new Timestamp(Calendar.getInstance().getTimeInMillis());
     }
 
-    public long getId() {
+    public long getId()
+    {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(long id)
+    {
         this.id = id;
     }
 
-    public String getSearchLink() {
+    public String getSearchLink()
+    {
         return searchLink;
     }
 
-    public void setSearchLink(String searchLink) {
+    public void setSearchLink(String searchLink)
+    {
         this.searchLink = searchLink;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Search{" +
                 "searchLink='" + searchLink + '\'' +
                 ", timestamp=" + timestamp +
