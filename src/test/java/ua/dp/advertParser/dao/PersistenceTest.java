@@ -1,4 +1,4 @@
-package ua.dp.advert_parser.dao;
+package ua.dp.advertParser.dao;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,14 +7,9 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-import ua.dp.advert_parser.dao.entity.Advert;
-import ua.dp.advert_parser.dao.entity.Search;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.util.Calendar;
 import java.util.List;
 
 /**

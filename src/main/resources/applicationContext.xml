@@ -7,22 +7,22 @@
        http://www.springframework.org/schema/context
          http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:component-scan base-package="ua.dp.advert_parser"/>
+    <context:component-scan base-package="ua.dp.advertParser"/>
     <context:annotation-config></context:annotation-config>
     <context:property-placeholder location="classpath:persistence.properties" />
 
-    <bean id="parser" class="ua.dp.advert_parser.core.Parser" lazy-init="true">
+    <bean id="parser" class="ua.dp.advertParser.core.Parser" lazy-init="true">
         <property name="Advert" ref="advert"/>
     </bean>
-    <bean id="advert" class="ua.dp.advert_parser.dao.entity.Advert" lazy-init="true">
+    <bean id="advert" class="ua.dp.advertParser.dao.entity.Advert" lazy-init="true">
         <property name="search" ref="search"/>
     </bean>
-    <bean id="search" class="ua.dp.advert_parser.dao.entity.Search" lazy-init="true"/>
-    <bean id="service" class="ua.dp.advert_parser.core.Service" lazy-init="true">
+    <bean id="search" class="ua.dp.advertParser.dao.entity.Search" lazy-init="true"/>
+    <bean id="service" class="ua.dp.advertParser.core.Service" lazy-init="true">
         <property name="parser" ref="parser"/>
         <property name="advert" ref="advert"/>
     </bean>
-    <bean id="application" class="ua.dp.advert_parser.Application" lazy-init="true">
+    <bean id="application" class="ua.dp.advertParser.Application" lazy-init="true">
         <property name="service" ref="service"/>
     </bean>
 
@@ -30,7 +30,7 @@
 
     <bean id="myEmf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="ua.dp.advert_parser" />
+        <property name="packagesToScan" value="ua.dp.advertParser" />
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
         </property>

@@ -1,4 +1,4 @@
-package ua.dp.advert_parser.dao.entity;
+package ua.dp.advertParser.dao.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -21,6 +21,9 @@ public class Search {
     {
         this.searchLink = searchLink;
         this.timestamp = new Timestamp(Calendar.getInstance().getTimeInMillis());
+    }
+
+    public Search() {
     }
 
     public long getId()

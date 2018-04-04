@@ -1,4 +1,4 @@
-package ua.dp.advert_parser.core;
+package ua.dp.advertParser.core;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -7,8 +7,8 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-import ua.dp.advert_parser.dao.entity.Advert;
-import ua.dp.advert_parser.dao.entity.Search;
+import ua.dp.advertParser.dao.entity.Advert;
+import ua.dp.advertParser.dao.entity.Search;
 
 /**
  * Created by Denis Berezanskiy on 27.03.2018.

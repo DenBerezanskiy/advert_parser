@@ -1,13 +1,11 @@
-package ua.dp.advert_parser.core;
+package ua.dp.advertParser.core;
 
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.junit.Before;
 import org.junit.Test;
-import ua.dp.advert_parser.dao.entity.Advert;
-import ua.dp.advert_parser.dao.entity.Search;
-
-import java.util.Set;
+import ua.dp.advertParser.dao.entity.Advert;
+import ua.dp.advertParser.dao.entity.Search;
 
 import static org.junit.Assert.*;
 

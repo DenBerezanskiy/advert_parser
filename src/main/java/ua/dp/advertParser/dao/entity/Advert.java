@@ -1,4 +1,4 @@
-package ua.dp.advert_parser.dao.entity;
+package ua.dp.advertParser.dao.entity;
 
 import javax.persistence.*;
 
