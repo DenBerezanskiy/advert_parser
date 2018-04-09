@@ -27,11 +27,14 @@ public class Service
     @PersistenceContext
     private EntityManager entityManager;
     
+
+    private static String searchLink;
+    
     @Scheduled(fixedRate = 30000)
     @Transactional
     public void findAdverts()
     {
-        String searchLink = "https://www.olx.ua/nedvizhimost/kvartiry-komnaty/dnepr/";
+         searchLink = "https://www.olx.ua/nedvizhimost/kvartiry-komnaty/dnepr/";
         
         advert = new Advert();
         Search search = null;
@@ -69,7 +72,7 @@ public class Service
                 }
             }
         }
-        
+        System.out.println(searchLink);
         System.out.println("findAdverts() method executed at :" + new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(new Date()));
     }
     
@@ -116,5 +119,14 @@ public class Service
     {
         return advert;
     }
-    
+
+    public static String getSearchLink()
+    {
+        return searchLink;
+    }
+
+    public static void setSearchLink(String searchLink)
+    {
+        Service.searchLink = searchLink;
+    }
 }

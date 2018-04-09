@@ -63,16 +63,16 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-            <version>1.5.9.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>1.5.9.RELEASE</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter</artifactId>-->
+            <!--<version>1.5.9.RELEASE</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-autoconfigure</artifactId>-->
+            <!--<version>1.5.9.RELEASE</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
@@ -87,6 +87,11 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
         </dependency>
     </dependencies>
 

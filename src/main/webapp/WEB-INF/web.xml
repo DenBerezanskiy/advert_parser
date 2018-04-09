@@ -16,8 +16,18 @@
         </servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>index</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>MyServlet</servlet-name>
+        <servlet-class>ua.dp.advertParser.controllers.MyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyServlet</servlet-name>
+        <url-pattern>/MyServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>
