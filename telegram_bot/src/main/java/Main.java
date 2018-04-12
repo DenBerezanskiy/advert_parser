@@ -8,14 +8,18 @@ import org.telegram.telegrambots.exceptions.TelegramApiRequestException;
  */
 public class Main
 {
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         ApiContextInitializer.init();
-
+        
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
-
-        try {
+        
+        try
+        {
             telegramBotsApi.registerBot(new Bot());
-        } catch (TelegramApiException e) {
+        }
+        catch (TelegramApiException e)
+        {
             System.out.println("Error.Bot terminated.");
             e.printStackTrace();
         }

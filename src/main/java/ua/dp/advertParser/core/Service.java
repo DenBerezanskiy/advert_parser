@@ -27,10 +27,14 @@ public class Service
     @PersistenceContext
     private EntityManager entityManager;
     
+    /**
+     * Method parse all newest ads and store it to DB.
+     */
     @Scheduled(fixedRate = 30000)
     @Transactional
     public void findAdverts()
     {
+        //TODO: unhardcode!!! refactor getting of searchlink
         String searchLink = "https://www.olx.ua/nedvizhimost/kvartiry-komnaty/dnepr/";
         
         advert = new Advert();
@@ -73,6 +77,9 @@ public class Service
         System.out.println("findAdverts() method executed at :" + new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(new Date()));
     }
     
+    /**
+     * Method must send ads to user via telegram bot
+     */
     @Scheduled(fixedRate = 30000)
     @Transactional
     public void sendAdverts()
@@ -89,7 +96,7 @@ public class Service
         for (Advert advert : result)
         {
             // TODO : Implement sending
-            // sent value must be 0 by default , only after sending marker must be changed to 1.
+            // sent value must be 0 by default , only after sending, marker must be changed to 1.
             
             entityManager.createQuery("update Advert set sent = 1 where url = '" + advert.getUrl() + "'").executeUpdate();
         }

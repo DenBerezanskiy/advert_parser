@@ -12,30 +12,32 @@ import ua.dp.advertParser.core.Service;
 public class Application
 {
     private Service service;
-
+    
     public static void main(String[] args)
     {
         System.out.println("Start");
-
+        
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-
+        
         System.out.println("Context initialized");
-
+        
         Application application = (Application) context.getBean("application");
-
+        
         application.service.findAdverts();
         application.service.sendAdverts();
-
+        
         //TODO : Next step is implementing of Spring MVC principles
         //TODO : and front-end part
         //TODO : Implement Logger
     }
-
-    public void setService(Service service) {
+    
+    public void setService(Service service)
+    {
         this.service = service;
     }
-
-    public Service getService() {
+    
+    public Service getService()
+    {
         return service;
     }
 }

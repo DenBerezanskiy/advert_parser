@@ -10,48 +10,47 @@ import java.util.Calendar;
 @Embeddable
 @Entity
 @Table(name = "serch_history")
-public class Search {
+public class Search
+{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String searchLink;
     private Timestamp timestamp;
-
+    
     public Search(String searchLink)
     {
         this.searchLink = searchLink;
         this.timestamp = new Timestamp(Calendar.getInstance().getTimeInMillis());
     }
-
-    public Search() {
+    
+    public Search()
+    {
     }
-
+    
     public long getId()
     {
         return id;
     }
-
+    
     public void setId(long id)
     {
         this.id = id;
     }
-
+    
     public String getSearchLink()
     {
         return searchLink;
     }
-
+    
     public void setSearchLink(String searchLink)
     {
         this.searchLink = searchLink;
     }
-
+    
     @Override
     public String toString()
     {
-        return "Search{" +
-                "searchLink='" + searchLink + '\'' +
-                ", timestamp=" + timestamp +
-                '}';
+        return "Search{" + "searchLink='" + searchLink + '\'' + ", timestamp=" + timestamp + '}';
     }
 }

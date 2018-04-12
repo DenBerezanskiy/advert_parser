@@ -23,65 +23,74 @@ public class Advert
     private Search search;
     @Column(columnDefinition = "int default 0")
     private int sent;
-    public Advert() {
+    
+    public Advert()
+    {
     }
-
-    public Advert(String url, String title, String price, Search search,int sent) {
+    
+    public Advert(String url, String title, String price, Search search, int sent)
+    {
         this.url = url;
         this.title = title;
         this.price = price;
         this.search = search;
         this.sent = sent;
     }
-
-
-    public Search getSearch() {
+    
+    
+    public Search getSearch()
+    {
         return search;
     }
-
-    public void setSearch(Search search) {
+    
+    public void setSearch(Search search)
+    {
         this.search = search;
     }
-
-    public String getUrl() {
+    
+    public String getUrl()
+    {
         return url;
     }
-
-    public void setUrl(String url) {
+    
+    public void setUrl(String url)
+    {
         this.url = url;
     }
-
-    public String getTitle() {
+    
+    public String getTitle()
+    {
         return title;
     }
-
-    public void setTitle(String title) {
+    
+    public void setTitle(String title)
+    {
         this.title = title;
     }
-
-    public String getPrice() {
+    
+    public String getPrice()
+    {
         return price;
     }
-
-    public void setPrice(String price) {
+    
+    public void setPrice(String price)
+    {
         this.price = price;
     }
-
-    public int getSent() {
+    
+    public int getSent()
+    {
         return sent;
     }
-
-    public void setSent(int sent) {
+    
+    public void setSent(int sent)
+    {
         this.sent = sent;
     }
-
+    
     @Override
-    public String toString() {
-        return "Advert{" +
-                " url='" + url + '\'' + "\n" +
-                ", title='" + title + '\'' + "\n" +
-                ", price='" + price + '\'' + "\n" +
-                ", search=" + search + "\n" +
-                '}';
+    public String toString()
+    {
+        return "Advert{" + " url='" + url + '\'' + "\n" + ", title='" + title + '\'' + "\n" + ", price='" + price + '\'' + "\n" + ", search=" + search + "\n" + '}';
     }
 }
