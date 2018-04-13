@@ -23,18 +23,30 @@ public class Advert
     private Search search;
     @Column(columnDefinition = "int default 0")
     private int sent;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "username")
+    private User user;
     public Advert() {
     }
 
-    public Advert(String url, String title, String price, Search search,int sent) {
+    public Advert(String url, String title, String price, Search search,User user) {
         this.url = url;
         this.title = title;
         this.price = price;
         this.search = search;
-        this.sent = sent;
+        this.user = user;
     }
-
-
+    
+    public User getUser()
+    {
+        return user;
+    }
+    
+    public void setUser(User user)
+    {
+        this.user = user;
+    }
+    
     public Search getSearch() {
         return search;
     }

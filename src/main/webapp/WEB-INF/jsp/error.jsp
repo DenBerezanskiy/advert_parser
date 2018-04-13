@@ -16,60 +16,55 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <style>
-        body
-        {
+        body {
             background: url(http://i.piccy.info/i9/55c2bf31e9c4bd885c55ecbb068f3530/1523017061/343058/1235287/150036a2c2b5.jpg) no-repeat fixed center;
             background-size: 100%;
         }
-        #box
-        {
-            left: 30%;
+
+        .navbar-brand {
+            font-family: "Berlin Sans FB";
+            font-size: x-large;
+        }
+
+        #box {
+            left: 40%;
             margin: auto;
             position: absolute;
-            top: 25%;
+            top: 30%;
+            color: aliceblue;
         }
-         .footer {
-             position: fixed;
-             left: 0;
-             bottom: 0;
-             width: 100%;
-             background-color: black;
-             color: gray;
-             text-align: center;
-             font-size: x-small;
 
-         }
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: black;
+            color: gray;
+            text-align: center;
+            font-size: x-small;
+        }
     </style>
 </head>
 <body>
 <div class="navbar-container">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 
-        <!-- Links -->
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="navbar-brand" href="/">
-                    <!--<img src="https://a.radikal.ru/a34/1804/8c/b87049588f93.jpg"/>-->
                     Advert Parser
                 </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/welcome">
-                    Search
-                    <!--for demonstrate numbers of adverts-->
-                    <span class="badge badge-light">4</span></a>
             </li>
         </ul>
     </nav>
 </div>
-<div>
-    <h1 id="box">
-        <pre>
-Sorry :( Something went wrong!
-
-Error 404 : page not found.
-        </pre>
+<div id="box">
+    <h1 >
+    ${status}
+    ${reason}
     </h1>
+
 </div>
 <div class="footer">
     <p>All rights reserved. Advert Parser 2018 :)</p>
