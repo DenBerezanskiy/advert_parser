@@ -12,39 +12,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet"  type="text/css" href="/resources/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <style>
-        body {
-            background: url(http://i.piccy.info/i9/55c2bf31e9c4bd885c55ecbb068f3530/1523017061/343058/1235287/150036a2c2b5.jpg) no-repeat fixed center;
-            background-size: 100%;
-        }
 
-        .navbar-brand {
-            font-family: "Berlin Sans FB";
-            font-size: x-large;
-        }
-
-        #box {
-            left: 40%;
-            margin: auto;
-            position: absolute;
-            top: 30%;
-            color: aliceblue;
-        }
-
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: black;
-            color: gray;
-            text-align: center;
-            font-size: x-small;
-        }
-    </style>
 </head>
 <body>
 <div class="navbar-container">

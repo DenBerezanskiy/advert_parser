@@ -7,53 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="http://i.piccy.info/i9/705e61dcb89f22f8ad1765de4d65cd95/1523253577/6265/1235287/icon.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet"  type="text/css" href="/resources/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <style>
-        body
-        {
-            background: url(http://i.piccy.info/i9/55c2bf31e9c4bd885c55ecbb068f3530/1523017061/343058/1235287/150036a2c2b5.jpg) no-repeat fixed center;
-            background-size: 100%;
-        }
-.navbar-brand
-{
-    font-family: "Berlin Sans FB";
-    font-size: x-large;
-}
-        .login
-        {
-            margin-top: 10%;
-            margin-left: 35%;
-            margin-right: 35%;
-            background-color: rgba(214, 214, 194,0.5);
-            border-radius: 3%;
-
-        }
-        .login-form
-        {
-            width: 50%;
-            margin: auto;
-        }
-        ::-webkit-input-placeholder {
-            font-style: italic;
-        }
-        #confirmButton
-                 {
-                     background-color: rgba(0, 0, 0,0.7);
-                 }
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: black;
-            color: gray;
-            text-align: center;
-            font-size: x-small;
-
-        }
-    </style>
 </head>
 <body>
 <div class="navbar-container">
@@ -69,8 +26,8 @@
     </nav>
 </div>
 
-<div class="login">
-  <form class="login-form">
+<div class="input-container">
+  <form class="input-from">
       <table>
           <tr>
                   <label>Username:</label>

@@ -1,0 +1,75 @@
+body {
+    background: url(http://i.piccy.info/i9/55c2bf31e9c4bd885c55ecbb068f3530/1523017061/343058/1235287/150036a2c2b5.jpg) no-repeat fixed center;
+    background-size: 100%;
+}
+
+.navbar-brand {
+    font-family: "Berlin Sans FB";
+    font-size: x-large;
+}
+
+.input-container {
+    margin-top: 10%;
+    margin-left: 35%;
+    margin-right: 35%;
+    background-color: rgba(214, 214, 194, 0.5);
+    border-radius: 3%;
+
+}
+
+.input-from {
+    width: 50%;
+    margin: auto;
+}
+
+::-webkit-input-placeholder {
+    font-style: italic;
+}
+
+#confirmButton {
+    margin-top: 10%;
+    margin-bottom: 10%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#searchConfirmButton {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: gray;
+    text-align: center;
+    font-size: x-small;
+
+}
+
+#box {
+    left: 40%;
+    margin: auto;
+    position: absolute;
+    top: 30%;
+    color: aliceblue;
+}
+
+.search-container
+{
+    position: absolute;
+    top: 50%;
+    margin: -50px 0 0 0;
+    width: 100%;
+}
+.info-container
+{
+    margin-top: 100px;
+    text-align: center;
+    font-size: larger;
+}
+
+
+
+
