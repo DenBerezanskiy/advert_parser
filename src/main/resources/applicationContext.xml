@@ -16,14 +16,26 @@
     </bean>
     <bean id="advert" class="ua.dp.advertParser.dao.entity.Advert" lazy-init="true">
         <property name="search" ref="search"/>
+        <property name="user" ref="user"/>
     </bean>
     <bean id="search" class="ua.dp.advertParser.dao.entity.Search" lazy-init="true"/>
+    <bean id="user" class="ua.dp.advertParser.dao.entity.User" lazy-init="true"/>
     <bean id="service" class="ua.dp.advertParser.core.Service" lazy-init="true">
         <property name="parser" ref="parser"/>
         <property name="advert" ref="advert"/>
     </bean>
+    <bean id="userService" class="ua.dp.advertParser.core.UserService" lazy-init="true">
+        <property name="user" ref="user"/>
+    </bean>
     <bean id="application" class="ua.dp.advertParser.Application" lazy-init="true">
         <property name="service" ref="service"/>
+        <property name="userService" ref="userService"/>
+    </bean>
+    <bean id="indexController" class="ua.dp.advertParser.controllers.IndexController">
+        <property name="userService" ref="userService"/>
+    </bean>
+    <bean id="registerController" class="ua.dp.advertParser.controllers.RegisterController">
+        <property name="userService" ref="userService"/>
     </bean>
 
     <!-- JPA & Hibernate configs -->

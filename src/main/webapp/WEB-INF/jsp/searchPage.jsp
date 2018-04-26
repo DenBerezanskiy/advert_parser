@@ -29,6 +29,7 @@
 <div class="info-container">
     <h1>Get Started</h1>
     <p>To begin using parser: just insert into input olx search link and click the "submit" button</p>
+    <p style="color: green">${message}</p>
 </div>
 <div class="search-container">
     <form class="form-inline  input-group col-md-12 " method="get">

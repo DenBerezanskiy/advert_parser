@@ -56,19 +56,19 @@ body {
     color: aliceblue;
 }
 
-.search-container
-{
+.search-container {
     position: absolute;
     top: 50%;
     margin: -50px 0 0 0;
     width: 100%;
 }
-.info-container
-{
+
+.info-container {
     margin-top: 100px;
     text-align: center;
     font-size: larger;
 }
+
 
 
 

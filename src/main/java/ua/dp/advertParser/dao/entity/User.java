@@ -1,19 +1,17 @@
 package ua.dp.advertParser.dao.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Denis Berezanskiy on 12.04.2018.
  */
+@Embeddable
 @Entity
 @Table(name = "users")
 public class User
 {
     @Id
-    @Column(unique = true , nullable = false)
+    @Column(unique = true , nullable = false, name = "username")
     private String username;
     @Column(nullable = false)
     private String password;

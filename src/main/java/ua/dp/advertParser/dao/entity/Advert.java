@@ -23,7 +23,8 @@ public class Advert
     private Search search;
     @Column(columnDefinition = "int default 0")
     private int sent;
-    @ManyToMany(fetch = FetchType.LAZY)
+    @Embedded
+    @OneToOne
     @JoinColumn(name = "username")
     private User user;
     public Advert() {

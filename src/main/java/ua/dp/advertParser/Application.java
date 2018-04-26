@@ -4,6 +4,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import ua.dp.advertParser.core.Service;
+import ua.dp.advertParser.core.UserService;
 
 /**
  * Created by Denis Berezanskiy on 27.03.2018.
@@ -12,7 +13,8 @@ import ua.dp.advertParser.core.Service;
 public class Application
 {
     private Service service;
-
+    private UserService userService;
+    
     public static void main(String[] args)
     {
         System.out.println("Start");
@@ -25,7 +27,6 @@ public class Application
 
         application.service.findAdverts();
         application.service.sendAdverts();
-
         //TODO : Next step is implementing of Spring MVC principles
         //TODO : and front-end part
         //TODO : Implement Logger
@@ -38,4 +39,8 @@ public class Application
     public Service getService() {
         return service;
     }
+    
+    public void setUserService(UserService userService) {this.userService = userService;}
+    
+    public UserService getUserService() { return userService; }
 }

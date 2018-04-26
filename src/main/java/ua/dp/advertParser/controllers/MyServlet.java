@@ -1,5 +1,8 @@
 package ua.dp.advertParser.controllers;
 
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import ua.dp.advertParser.core.Service;
 
 import javax.servlet.ServletException;
@@ -14,19 +17,15 @@ import java.lang.reflect.Field;
  */
 public class MyServlet extends HttpServlet
 {
-    private String searchLink  = null;
-    
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
-    {
-        searchLink = req.getParameter("fname");
-        System.out.println(searchLink);
-        System.out.println(searchLink);
-        System.out.println(searchLink);
-        System.out.println("get");
-        resp.sendRedirect("/welcome");
-        System.out.println("search link is :" +searchLink);
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(Model model, String error, String logout) {
+        if (error != null)
+            model.addAttribute("error", "Your username and password is invalid.");
         
+        if (logout != null)
+            model.addAttribute("message", "You have been logged out successfully.");
+        
+        return "login";
     }
 }
 

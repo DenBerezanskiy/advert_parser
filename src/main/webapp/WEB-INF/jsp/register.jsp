@@ -29,30 +29,45 @@
     </nav>
 </div>
 <div class="input-container">
-    <form class="input-from">
+    <form class="input-from" method="get" action="/registerUser">
         <table>
             <tr>
                 <label>Username:</label>
                 <input class="form-control" id="username" name="username" placeholder="Username">
             </tr>
             <tr>
+                <span style="color: red">${userMessage}<br></span>
+            </tr>
+            <tr>
                 <label>Password:</label>
                 <input class="form-control" id="password" name="password" placeholder="Password">
+            </tr>
+            <tr>
+                <span  style="color: red">${passMessage}<br></span>
             </tr>
             <tr>
                 <label>Email:</label>
                 <input class="form-control" id="email" name="email" placeholder="Email">
             </tr>
             <tr>
+                <span  style="color: red">${emailMessage}<br></span>
+            </tr>
+            <tr>
                 <label>Phone number:</label>
                 <input class="form-control" id="phone" name="phone" placeholder="Phone number">
             </tr>
             <tr>
+                <span  style="color: red">${phoneMessage}<br></span>
+            </tr>
+            <tr>
                 <td>
-                    <input class="btn btn-outline-success" type="submit" id="confirmButton" value="Register">
+                    <input class="btn btn-outline-success" type="submit" id="confirmButton" value="Register" action="/registerUser">
                 </td>
             </tr>
         </table>
+        <tr>
+            <span>${existsMessage}</span>
+        </tr>
     </form>
 </div>
 
@@ -60,5 +75,6 @@
 <div class="footer">
     <p>All rights reserved. Advert Parser 2018 :)</p>
 </div>
+
 </body>
 </html>

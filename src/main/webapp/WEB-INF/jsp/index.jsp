@@ -27,25 +27,37 @@
 </div>
 
 <div class="input-container">
-  <form class="input-from">
+  <form class="input-from" method="get" action="/validateLogin">
+      <div class="form-group">
       <table>
           <tr>
-                  <label>Username:</label>
-                  <input class="form-control" id="username" name="username" placeholder="Username">
+
+              <label>Username:</label>
+                  <input class="form-control" type="text" id="username" name="username" placeholder="Username">
+          </tr>
+          <tr>
+              <span style="color: red">${loginMessage}</span>
           </tr>
           <tr>
                   <label>Password:</label>
-                  <input class="form-control" id="password" name="password" placeholder="Password">
+                  <input class="form-control" type="text" id="password" name="password" placeholder="Password">
+          </tr>
+          <tr>
+              <span style="color: red">${passMessage}</span>
           </tr>
           <tr>
               <td>
-                  <input class="btn btn-outline-success" type="submit" id="confirmButton" value="Login">
+                  <input class="btn btn-outline-success" type="submit" id="confirmButton" value="Login" action="/validateLogin">
               </td>
               <td>
                   <a href="/register">Haven't register?</a>
               </td>
           </tr>
       </table>
+          <tr>
+              <span style="color: red">${errorMessage}</span>
+          </tr>
+      </div>
   </form>
 </div>
 

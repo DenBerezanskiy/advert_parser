@@ -119,7 +119,7 @@ public class Service
     {
         return advert;
     }
-
+    
     public static String getSearchLink()
     {
         return searchLink;
@@ -129,4 +129,5 @@ public class Service
     {
         Service.searchLink = searchLink;
     }
+    
 }
