@@ -6,7 +6,7 @@ import org.jsoup.select.Elements;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.transaction.annotation.Transactional;
 
-import ua.dp.AdvertParser.Bot;
+import ua.dp.advertParser.Bot;
 import ua.dp.advertParser.dao.entity.Advert;
 import ua.dp.advertParser.dao.entity.Search;
 
@@ -40,39 +40,40 @@ public class Service
     @Transactional
     public void findAdverts()
     {
-        
+    
         Query linkQuery = entityManager.createQuery("from Search where isActive = 0");
-        
+    
         List result = linkQuery.getResultList();
-        
-        Search search = (Search) result.get(0);
-        
-        searchLink = search.getSearchLink();
-        
-        advert = new Advert();
-        
-        if (searchLink != null || !searchLink.isEmpty())
+        if (!result.isEmpty())
         {
-            Elements elements = parser.parsePage(searchLink);
-            
-            for (Element element : elements)
+            Search search = (Search) result.get(0);
+            searchLink = search.getSearchLink();
+    
+            advert = new Advert();
+    
+            if (searchLink != null || !searchLink.isEmpty())
             {
-                advert = parser.parseAdvert(element, search);
-                
-                Query checkUniquenessQuery = entityManager.createQuery("from Advert where url = :link");
-                checkUniquenessQuery.setParameter("link", advert.getUrl());
-                
-                List resultList = checkUniquenessQuery.getResultList();
-                
-                if (resultList.isEmpty())
+                Elements elements = parser.parsePage(searchLink);
+        
+                for (Element element : elements)
                 {
-                    if (advert.getUrl() != null && advert.getTitle() != null && advert.getPrice() != null)
+                    advert = parser.parseAdvert(element, search);
+            
+                    Query checkUniquenessQuery = entityManager.createQuery("from Advert where url = :link");
+                    checkUniquenessQuery.setParameter("link", advert.getUrl());
+            
+                    List resultList = checkUniquenessQuery.getResultList();
+            
+                    if (resultList.isEmpty())
                     {
-                        entityManager.persist(advert);
+                        if (advert.getUrl() != null && advert.getTitle() != null && advert.getPrice() != null)
+                        {
+                            entityManager.persist(advert);
+                        }
                     }
                 }
+                System.out.println("findAdverts() method executed at :" + new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(new Date()));
             }
-            System.out.println("findAdverts() method executed at :" + new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(new Date()));
         }
     }
     

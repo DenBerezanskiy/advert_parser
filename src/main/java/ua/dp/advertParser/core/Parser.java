@@ -25,7 +25,7 @@ public class Parser
      * @param url - search link ,obtained from UI input.
      * @return Elements of offers table from olx
      */
-
+    
     public Elements parsePage(String url)
     {
         Document doc = null;
@@ -50,7 +50,7 @@ public class Parser
      * @param search  - Url entity ,who obtained from UI input.
      * @return Advert entity
      */
-
+    
     public Advert parseAdvert(Element element, Search search)
     {
         advert = new Advert();
@@ -58,24 +58,16 @@ public class Parser
         
         if (element != null)
         {
-
-            // TODO: Please check what you really need to get all elements with "detailsLink, price and _a_"
-            // Instead of it you can use '.get(0)' for the first occurrence
-            
-            Elements detailsLinkElements = element.getElementsByAttributeValueContaining("class", "detailsLink");
+            Elements detailsLinkElements = element.getElementsByAttributeValueContaining("class", "linkWithHash detailsLink");
             
             if (detailsLinkElements != null && detailsLinkElements.hasAttr("href"))
             {
                 String url = detailsLinkElements.attr("href");
                 advert.setUrl(url);
             }
-            
-            Elements hrefElements = element.getElementsByTag("a");
-            
-            if (hrefElements != null && hrefElements.text() != null)
+            if (detailsLinkElements != null && detailsLinkElements.hasText())
             {
-                String title = hrefElements.text();
-                advert.setTitle(title);
+                advert.setTitle(detailsLinkElements.text());
             }
             
             Elements priceElements = element.getElementsByAttributeValue("class", "price");

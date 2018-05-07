@@ -71,11 +71,11 @@ public class WebService
             Query activateExistingSearch = entityManager.createQuery("update Search" + " set isActive = 0 where searchLink = :link");
             activateExistingSearch.setParameter("link", link);
             activateExistingSearch.executeUpdate();
-            
         }
         else
         {
             entityManager.persist(search);
+            
         }
         Query deactivateOtherSearches = entityManager.
                 createQuery("update Search set isActive = 1 where searchLink != '" + link + "'");
@@ -86,14 +86,13 @@ public class WebService
     
     private boolean isSearchLinkExists(String link)
     {
-        boolean isLinkExists = false;
-        Query query = entityManager.createQuery("from Search where searchLink = : link");
-        query.setParameter("link", link);
+        boolean isLinkExists = true;
+        Query query = entityManager.createQuery("from Search where searchLink = '" + link + "'");
         
         List result = query.getResultList();
         if (result.isEmpty())
         {
-            isLinkExists = true;
+            isLinkExists = false;
         }
         return isLinkExists;
     }
