@@ -13,15 +13,23 @@ import ua.dp.advertParser.dao.entity.Search;
 /**
  * Created by Denis Berezanskiy on 27.03.2018.
  */
+<<<<<<< HEAD
+=======
+
+//TODO: Logger
+>>>>>>> mvc_impl
 public class Parser
 {
     private Advert advert;
     
+<<<<<<< HEAD
     /***
      * The method below -
      * @param url - search link ,obtained from UI input.
      * @return Elements of offers table from olx
      */
+=======
+>>>>>>> mvc_impl
     public Elements parsePage(String url)
     {
         Document doc = null;
@@ -41,11 +49,14 @@ public class Parser
         return elements;
     }
     
+<<<<<<< HEAD
     /**
      * @param element - html element that contains offer box details.
      * @param search  - Url entity ,who obtained from UI input.
      * @return Advert entity
      */
+=======
+>>>>>>> mvc_impl
     public Advert parseAdvert(Element element, Search search)
     {
         advert = new Advert();
@@ -53,7 +64,11 @@ public class Parser
         
         if (element != null)
         {
+<<<<<<< HEAD
             // Todo: Please check what you really need to get all elements with "detailsLink, price and _a_"
+=======
+            // TODO: Please check what you really need to get all elements with "detailsLink, price and _a_"
+>>>>>>> mvc_impl
             // Instead of it you can use '.get(0)' for the first occurrence
             
             Elements detailsLinkElements = element.getElementsByAttributeValueContaining("class", "detailsLink");

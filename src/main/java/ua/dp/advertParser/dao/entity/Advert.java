@@ -5,6 +5,8 @@ import javax.persistence.*;
 /**
  * Created by Denis Berezanskiy on 12.03.2018.
  */
+//TODO: equals method
+
 @Entity
 @Table(name = "adverts")
 public class Advert
@@ -23,6 +25,7 @@ public class Advert
     private Search search;
     @Column(columnDefinition = "int default 0")
     private int sent;
+<<<<<<< HEAD
     
     public Advert()
     {
@@ -30,16 +33,40 @@ public class Advert
     
     public Advert(String url, String title, String price, Search search, int sent)
     {
+=======
+    @Embedded
+    @OneToOne
+    @JoinColumn(name = "username")
+    private User user;
+    public Advert() {
+    }
+
+    public Advert(String url, String title, String price, Search search,User user) {
+>>>>>>> mvc_impl
         this.url = url;
         this.title = title;
         this.price = price;
         this.search = search;
-        this.sent = sent;
+        this.user = user;
     }
     
+<<<<<<< HEAD
     
     public Search getSearch()
     {
+=======
+    public User getUser()
+    {
+        return user;
+    }
+    
+    public void setUser(User user)
+    {
+        this.user = user;
+    }
+    
+    public Search getSearch() {
+>>>>>>> mvc_impl
         return search;
     }
     
