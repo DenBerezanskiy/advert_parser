@@ -25,24 +25,13 @@ public class Advert
     private Search search;
     @Column(columnDefinition = "int default 0")
     private int sent;
-<<<<<<< HEAD
-    
-    public Advert()
-    {
-    }
-    
-    public Advert(String url, String title, String price, Search search, int sent)
-    {
-=======
     @Embedded
     @OneToOne
     @JoinColumn(name = "username")
     private User user;
-    public Advert() {
-    }
-
+    public Advert() { }
+    
     public Advert(String url, String title, String price, Search search,User user) {
->>>>>>> mvc_impl
         this.url = url;
         this.title = title;
         this.price = price;
@@ -50,11 +39,6 @@ public class Advert
         this.user = user;
     }
     
-<<<<<<< HEAD
-    
-    public Search getSearch()
-    {
-=======
     public User getUser()
     {
         return user;
@@ -66,7 +50,6 @@ public class Advert
     }
     
     public Search getSearch() {
->>>>>>> mvc_impl
         return search;
     }
     

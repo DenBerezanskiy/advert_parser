@@ -17,11 +17,9 @@ public class Search
     private long id;
     private String searchLink;
     private Timestamp timestamp;
-<<<<<<< HEAD
-=======
+
     @Column(columnDefinition = "int default 0")
     private int isActive;
->>>>>>> mvc_impl
     
     public Search(String searchLink)
     {
@@ -52,9 +50,7 @@ public class Search
     {
         this.searchLink = searchLink;
     }
-    
-<<<<<<< HEAD
-=======
+
     public int getIsActive()
     {
         return isActive;
@@ -65,13 +61,11 @@ public class Search
         this.isActive = isActive;
     }
     
->>>>>>> mvc_impl
     @Override
     public String toString()
     {
         return "Search{" + "searchLink='" + searchLink + '\'' + ", timestamp=" + timestamp + '}';
-<<<<<<< HEAD
-=======
+
     }
     
     @Override
@@ -89,8 +83,7 @@ public class Search
         if (!searchLink.equals(search.searchLink))
             return false;
         return (!timestamp.equals(search.timestamp));
-        
->>>>>>> mvc_impl
+
     }
     
 }

@@ -6,7 +6,6 @@ import org.jsoup.select.Elements;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.transaction.annotation.Transactional;
 
-import ua.dp.advertParser.bot.Bot;
 import ua.dp.advertParser.dao.entity.Advert;
 import ua.dp.advertParser.dao.entity.Search;
 
@@ -31,24 +30,19 @@ public class Service
     @PersistenceContext
     private EntityManager entityManager;
     
-<<<<<<< HEAD
     /**
      * Method parse all newest ads and store it to DB.
      */
-=======
     private static String searchLink;
     
->>>>>>> mvc_impl
     @Scheduled(fixedRate = 30000)
     @Transactional
     public void findAdverts()
     {
-<<<<<<< HEAD
         //TODO: unhardcode!!! refactor getting of searchlink
         String searchLink = "https://www.olx.ua/nedvizhimost/kvartiry-komnaty/dnepr/";
-=======
+        
         Query linkQuery = entityManager.createQuery("from Search where isActive = 0");
->>>>>>> mvc_impl
         
         List result = linkQuery.getResultList();
         
@@ -101,17 +95,14 @@ public class Service
         for (Advert advert : result)
         {
             // TODO : Implement sending
-<<<<<<< HEAD
             // sent value must be 0 by default , only after sending, marker must be changed to 1.
             
-=======
             // It works but throws TelegramApiValidationException.
             //some of adverts in loop has null value
             //magic
             String url = advert.getUrl();
-            new Bot().sendAdvertUrl(url);
+//            new Bot().sendAdvertUrl(url);
             // sent value must be 0 by default , only after sending marker must be changed to 1.
->>>>>>> mvc_impl
             entityManager.createQuery("update Advert set sent = 1 where url = '" + advert.getUrl() + "'").executeUpdate();
             System.out.println(advert);
         }
