@@ -15,6 +15,7 @@ public class Application
 {
     private Service service;
     private WebService WebService;
+    
     public static void main(String[] args)
     {
         System.out.println("Start");
@@ -46,6 +47,4 @@ public class Application
     public void setWebService(WebService WebService) {this.WebService = WebService;}
     
     public WebService getWebService() { return WebService; }
-    
-    
 }
