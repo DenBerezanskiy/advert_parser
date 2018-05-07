@@ -2,6 +2,7 @@ package ua.dp.advertParser;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import ua.dp.AdvertParser.Bot;
 import ua.dp.advertParser.core.Service;
 import ua.dp.advertParser.core.WebService;
 
@@ -13,11 +14,8 @@ import ua.dp.advertParser.core.WebService;
 @EnableScheduling
 public class Application
 {
-    private static final String LOGTAG = "MAIN";
-    
     private Service service;
     private WebService WebService;
-    
     public static void main(String[] args)
     {
         System.out.println("Start");
@@ -29,7 +27,7 @@ public class Application
         Application application = (Application) context.getBean("application");
         
         //        application.botInitialize();
-        
+        Bot.botInitialize();
         application.service.findAdverts();
         application.service.sendAdverts();
         

@@ -6,6 +6,7 @@ import org.jsoup.select.Elements;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.transaction.annotation.Transactional;
 
+import ua.dp.AdvertParser.Bot;
 import ua.dp.advertParser.dao.entity.Advert;
 import ua.dp.advertParser.dao.entity.Search;
 
@@ -101,7 +102,7 @@ public class Service
             //some of adverts in loop has null value
             //magic
             String url = advert.getUrl();
-//            new Bot().sendAdvertUrl(url);
+            new Bot().sendAdvertUrl(url);
             // sent value must be 0 by default , only after sending marker must be changed to 1.
             entityManager.createQuery("update Advert set sent = 1 where url = '" + advert.getUrl() + "'").executeUpdate();
             System.out.println(advert);
