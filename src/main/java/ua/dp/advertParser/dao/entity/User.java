@@ -5,6 +5,7 @@ import javax.persistence.*;
 /**
  * Created by Denis Berezanskiy on 12.04.2018.
  */
+//TODO: equals method
 @Embeddable
 @Entity
 @Table(name = "users")

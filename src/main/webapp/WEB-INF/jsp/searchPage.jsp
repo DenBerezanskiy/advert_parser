@@ -28,13 +28,17 @@
 </div>
 <div class="info-container">
     <h1>Get Started</h1>
-    <p>To begin using parser: just insert into input olx search link and click the "submit" button</p>
+    <p>To begin using parser:</p>
+
+        <p><a href="https://t.me/joinchat/AAAAAE1ojQhIyefBoqaUOA">Join to telegram channel</a> </p>
+        <p>Insert into search field prepared link with olx search parameters</p>
+
     <p style="color: green">${message}</p>
 </div>
 <div class="search-container">
-    <form class="form-inline  input-group col-md-12 " method="get">
+    <form class="form-inline  input-group col-md-12 " method="get" action="/delegateLink">
         <input class="form-control" type="text" id="searchInput" name="inputField" placeholder="Search">
-        <input type="submit" class="btn btn-outline-success" id="searchConfirmButton" disabled="disabled" method="get" placeholder="Submit"/>
+        <input type="submit" class="btn btn-outline-success" id="searchConfirmButton" disabled="disabled" method="get" action="/delegateLink" placeholder="Submit"/>
     </form>
 </div>
 <div id="alert_placeholder"></div>

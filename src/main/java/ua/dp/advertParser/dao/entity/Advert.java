@@ -5,6 +5,8 @@ import javax.persistence.*;
 /**
  * Created by Denis Berezanskiy on 12.03.2018.
  */
+//TODO: equals method
+
 @Entity
 @Table(name = "adverts")
 public class Advert

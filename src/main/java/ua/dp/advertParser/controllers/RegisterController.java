@@ -2,10 +2,9 @@ package ua.dp.advertParser.controllers;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import ua.dp.advertParser.core.UserService;
+import ua.dp.advertParser.core.WebService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,10 +13,14 @@ import java.io.IOException;
 /**
  * Created by Denis Berezanskiy on 12.04.2018.
  */
+//TODO: Implement registration with Spring Security
+//TODO: Possibility to stay signed in after registration
+//TODO: Logger
+
 @Controller
 public class RegisterController
 {
-    private UserService userService;
+    private WebService webService;
     
     @RequestMapping("/register")
     public ModelAndView index()
@@ -39,7 +42,7 @@ public class RegisterController
         
         RegisterController registerController = (RegisterController) context.getBean("registerController");
         
-        if (registerController.userService.isUserExists(username))
+        if (registerController.webService.isUserExists(username))
         {
             mav.addObject("existsMessage", "User already exists!");
         }
@@ -73,9 +76,9 @@ public class RegisterController
                 mav.addObject("passMessage", message);
                 canBeRegistred = false;
             }
-            if(canBeRegistred)
+            if (canBeRegistred)
             {
-                registerController.userService.createUser(username, password, email, phone);
+                registerController.webService.createUser(username, password, email, phone);
                 mav.setViewName("searchPage");
                 mav.addObject("message", "Your account has been created successfully");
             }
@@ -85,8 +88,13 @@ public class RegisterController
         return mav;
     }
     
-    public void setUserService(UserService userService)
+    public void setWebService(WebService WebService)
     {
-        this.userService = userService;
+        this.webService = WebService;
+    }
+    
+    public WebService getWebService()
+    {
+        return webService;
     }
 }

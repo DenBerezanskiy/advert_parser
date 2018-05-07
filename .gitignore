@@ -3,3 +3,6 @@ target/*
 # Intellij IDEA
 .idea/*
 *.iml
+#Telegram log
+*.log
+*.log.lck
