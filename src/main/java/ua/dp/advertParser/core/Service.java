@@ -40,8 +40,6 @@ public class Service
     @Transactional
     public void findAdverts()
     {
-        //TODO: unhardcode!!! refactor getting of searchlink
-        String searchLink = "https://www.olx.ua/nedvizhimost/kvartiry-komnaty/dnepr/";
         
         Query linkQuery = entityManager.createQuery("from Search where isActive = 0");
         
@@ -78,36 +76,30 @@ public class Service
         }
     }
     
-    /**
-     * Method must send ads to user via telegram bot
-     */
+    
     @Scheduled(fixedRate = 30000)
     @Transactional
     public void sendAdverts()
     {
         Query query = entityManager.createQuery("from Advert where sent = 0");
         
-        List<Advert> result = query.getResultList(); // To do: Unchecked assignment
+        List<Advert> result = query.getResultList(); // TODO: Unchecked assignment
         ArrayList<String> advertUrls = new ArrayList<>();
+        
         if (result.isEmpty())
         {
             return;
         }
         for (Advert advert : result)
         {
-            // TODO : Implement sending
-            // sent value must be 0 by default , only after sending, marker must be changed to 1.
-            
-            // It works but throws TelegramApiValidationException.
-            //some of adverts in loop has null value
-            //magic
-            String url = advert.getUrl();
-            new Bot().sendAdvertUrl(url);
-            // sent value must be 0 by default , only after sending marker must be changed to 1.
-            entityManager.createQuery("update Advert set sent = 1 where url = '" + advert.getUrl() + "'").executeUpdate();
-            System.out.println(advert);
+            if (advert.getUrl() != null && advert.getPrice() != null && advert.getTitle() != null)
+            {
+                String url = advert.getUrl();
+                new Bot().sendAdvertUrl(url);
+                // sent value must be 0 by default , only after sending marker must be changed to 1.
+                entityManager.createQuery("update Advert set sent = 1 where url = '" + advert.getUrl() + "'").executeUpdate();
+            }
         }
-        
         System.out.println("sendAdverts() method executed at :" + new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(new Date()));
     }
     
