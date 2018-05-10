@@ -6,7 +6,7 @@ import org.jsoup.select.Elements;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.transaction.annotation.Transactional;
 
-import ua.dp.advertParser.Bot;
+import ua.dp.advertParser.bot.Bot;
 import ua.dp.advertParser.dao.entity.Advert;
 import ua.dp.advertParser.dao.entity.Search;
 

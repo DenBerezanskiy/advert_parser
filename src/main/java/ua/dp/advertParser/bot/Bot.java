@@ -1,4 +1,4 @@
-package ua.dp.advertParser;
+package ua.dp.advertParser.bot;
 
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;

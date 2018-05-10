@@ -2,6 +2,7 @@ package ua.dp.advertParser;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import ua.dp.advertParser.bot.Bot;
 import ua.dp.advertParser.core.Service;
 import ua.dp.advertParser.core.WebService;
 
