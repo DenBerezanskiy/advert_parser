@@ -12,18 +12,20 @@ import javax.persistence.*;
 public class User
 {
     @Id
-    @Column(unique = true , nullable = false, name = "username")
+    @Column(unique = true, nullable = false, name = "username")
     private String username;
     @Column(nullable = false)
     private String password;
     @Column(unique = true, nullable = false)
     private String email;
-    @Column(unique = true , nullable = false)
+    @Column(unique = true, nullable = false)
     private String phone;
+    private long chatId;
     
     public User()
     {
     }
+    
     public User(String username, String password, String email, String phone)
     {
         this.username = username;
@@ -70,5 +72,15 @@ public class User
     public void setPhone(String phone)
     {
         this.phone = phone;
+    }
+    
+    public long getChatId()
+    {
+        return chatId;
+    }
+    
+    public void setChatId(long chatId)
+    {
+        this.chatId = chatId;
     }
 }

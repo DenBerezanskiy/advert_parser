@@ -41,6 +41,11 @@
         <property name="webService" ref="webService"/>
     </bean>
 
+    <bean id="botService" class="ua.dp.advertParser.bot.BotService" lazy-init="true"/>
+    <bean id="bot" class="ua.dp.advertParser.bot.Bot" lazy-init="true">
+        <property name="botService" ref="botService"/>
+    </bean>
+
     <!-- JPA & Hibernate configs -->
 
     <bean id="myEmf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
