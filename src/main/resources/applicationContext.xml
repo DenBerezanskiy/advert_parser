@@ -30,7 +30,6 @@
     <bean id="application" class="ua.dp.advertParser.Application" lazy-init="true">
         <property name="service" ref="service"/>
         <property name="webService" ref="webService"/>
-        <property name="botService" ref="botService"/>
     </bean>
     <bean id="indexController" class="ua.dp.advertParser.controllers.IndexController" lazy-init="true">
         <property name="webService" ref="webService"/>
@@ -40,10 +39,6 @@
     </bean>
     <bean id="searchPageController" class="ua.dp.advertParser.controllers.SearchPageController" lazy-init="true">
         <property name="webService" ref="webService"/>
-    </bean>
-    <bean id="botService" class="ua.dp.advertParser.bot.BotService" lazy-init="true"/>
-    <bean id="bot" class="ua.dp.advertParser.bot.Bot" lazy-init="true">
-    <property name="botService" ref="botService"/>
     </bean>
 
     <!-- JPA & Hibernate configs -->
