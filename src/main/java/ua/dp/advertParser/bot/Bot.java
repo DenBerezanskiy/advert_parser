@@ -44,7 +44,7 @@ public class Bot extends TelegramLongPollingBot
             if (update.getMessage().getText().equalsIgnoreCase("/start"))
             {
                 SendMessage message = new SendMessage().setChatId(update.getMessage().getChatId());
-                message.setText("Hello! Now I'm waiting for your search link" + update.getMessage().getChatId());
+                message.setText("Hello! Now I'm waiting for your search link");
                 try
                 {
                     execute(message);
