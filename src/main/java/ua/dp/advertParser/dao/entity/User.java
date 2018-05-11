@@ -20,6 +20,7 @@ public class User
     private String email;
     @Column(unique = true , nullable = false)
     private String phone;
+    private long chatId;
     
     public User()
     {
@@ -70,5 +71,15 @@ public class User
     public void setPhone(String phone)
     {
         this.phone = phone;
+    }
+    
+    public long getChatId()
+    {
+        return chatId;
+    }
+    
+    public void setChatId(long chatId)
+    {
+        this.chatId = chatId;
     }
 }

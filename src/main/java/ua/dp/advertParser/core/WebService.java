@@ -1,7 +1,5 @@
 package ua.dp.advertParser.core;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ua.dp.advertParser.dao.entity.Search;
 import ua.dp.advertParser.dao.entity.User;
