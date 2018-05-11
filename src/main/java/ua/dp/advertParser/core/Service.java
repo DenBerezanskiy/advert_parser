@@ -50,24 +50,26 @@ public class Service
             if (searchLink != null || !searchLink.isEmpty())
             {
                 Elements elements = parser.parsePage(searchLink);
-                
+                int numberOfAds = 0;
                 for (Element element : elements)
                 {
                     advert = parser.parseAdvert(element, search);
                     Query checkUniquenessQuery = entityManager.createQuery("from Advert where url = :link");
                     checkUniquenessQuery.setParameter("link", advert.getUrl());
                     
-                    List resultList = checkUniquenessQuery.getResultList();
+                    List duplicateEntries = checkUniquenessQuery.getResultList();
                     
-                    if (resultList.isEmpty())
+                    if (duplicateEntries.isEmpty())
                     {
                         if (advert.getUrl() != null && advert.getTitle() != null && advert.getPrice() != null)
                         {
                             entityManager.persist(advert);
+                            numberOfAds++;
                         }
                     }
                 }
                 System.out.println("findAdverts() method executed at :" + new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(new Date()));
+                System.out.println(numberOfAds + " new ads are found");
             }
         }
     }
@@ -78,17 +80,18 @@ public class Service
     {
         Query query = entityManager.createQuery("from Advert where sent = 0");
         
-        List<Advert> result = query.getResultList(); // TODO: Unchecked assignment
+        List<Advert> adverts = query.getResultList(); // TODO: Unchecked assignment
 
         Query chatIdQuery = entityManager.createQuery("from User where chatId != 0");
         List<User> users = chatIdQuery.getResultList();
+        int numberOfAds = 0;
 
         
-        if (result.isEmpty())
+        if (adverts.isEmpty())
         {
             return;
         }
-        for (Advert advert : result)
+        for (Advert advert : adverts)
         {
 
             if (advert.getUrl() != null && advert.getPrice() != null && advert.getTitle() != null && !users.isEmpty())
@@ -97,9 +100,11 @@ public class Service
                 new Bot().sendAdvertUrl(url, users.get(0).getChatId());
                 // sent value must be 0 by default , only after sending marker must be changed to 1.
                 entityManager.createQuery("update Advert set sent = 1 where url = '" + advert.getUrl() + "'").executeUpdate();
+                numberOfAds++;
             }
         }
         System.out.println("sendAdverts() method executed at :" + new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(new Date()));
+        System.out.println(numberOfAds+ "new ads are sent");
     }
     
     public void setParser(Parser parser)
