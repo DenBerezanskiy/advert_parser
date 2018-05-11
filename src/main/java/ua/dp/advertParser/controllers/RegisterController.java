@@ -73,7 +73,7 @@ public class RegisterController
             if (phone.isEmpty() || phoneLength < 13 || !phone.contains("+"))
             {
                 String message = "phone  must be like  +380112233344";
-                mav.addObject("passMessage", message);
+                mav.addObject("phoneMessage", message);
                 canBeRegistred = false;
             }
             if (canBeRegistred)

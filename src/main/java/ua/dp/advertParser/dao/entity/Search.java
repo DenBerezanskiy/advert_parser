@@ -9,7 +9,7 @@ import java.util.Calendar;
  */
 @Embeddable
 @Entity
-@Table(name = "serch_history")
+@Table(name = "search_history")
 public class Search
 {
     @Id
@@ -65,7 +65,6 @@ public class Search
     public String toString()
     {
         return "Search{" + "searchLink='" + searchLink + '\'' + ", timestamp=" + timestamp + '}';
-        
     }
     
     @Override
