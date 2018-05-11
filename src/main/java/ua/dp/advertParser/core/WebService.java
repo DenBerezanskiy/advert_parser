@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * Created by Denis Berezanskiy on 26.04.2018.
  */
+
 //TODO: Logger
 //TODO: Refactor with Spring Framework
 
@@ -24,7 +25,6 @@ public class WebService
     public boolean validateUser(String username, String password)
     {
         boolean isValid = false;
-        
         Query query = entityManager.createQuery("from User where username = :user and password = :pass");
         query.setParameter("user", username);
         query.setParameter("pass", password);
@@ -73,13 +73,10 @@ public class WebService
         else
         {
             entityManager.persist(search);
-            
         }
         Query deactivateOtherSearches = entityManager.
                 createQuery("update Search set isActive = 1 where searchLink != '" + link + "'");
         deactivateOtherSearches.executeUpdate();
-        
-        
     }
     
     private boolean isSearchLinkExists(String link)

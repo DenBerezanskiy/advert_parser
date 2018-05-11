@@ -17,7 +17,7 @@ public class Search
     private long id;
     private String searchLink;
     private Timestamp timestamp;
-
+    
     @Column(columnDefinition = "int default 0")
     private int isActive;
     
@@ -50,7 +50,7 @@ public class Search
     {
         this.searchLink = searchLink;
     }
-
+    
     public int getIsActive()
     {
         return isActive;
@@ -65,7 +65,7 @@ public class Search
     public String toString()
     {
         return "Search{" + "searchLink='" + searchLink + '\'' + ", timestamp=" + timestamp + '}';
-
+        
     }
     
     @Override
@@ -83,7 +83,7 @@ public class Search
         if (!searchLink.equals(search.searchLink))
             return false;
         return (!timestamp.equals(search.timestamp));
-
+        
     }
     
 }

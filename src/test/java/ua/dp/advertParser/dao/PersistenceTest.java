@@ -18,13 +18,14 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/persistentApplicationContext.xml")
 @Transactional
-public class PersistenceTest {
+public class PersistenceTest
+{
     @PersistenceContext
     EntityManager em;
-
+    
     @Autowired
     LocalContainerEntityManagerFactoryBean context;
-
+    
     @Test
     public void testPersistence() throws Exception
     {
@@ -32,6 +33,5 @@ public class PersistenceTest {
         List result = em.createQuery("select a from Advert a").getResultList();
         System.out.println(result);
         result = em.createQuery("select s from Search s").getResultList();
-        System.out.println(result);
     }
 }

@@ -82,9 +82,7 @@ public class RegisterController
                 mav.setViewName("searchPage");
                 mav.addObject("message", "Your account has been created successfully");
             }
-            
         }
-        
         return mav;
     }
     

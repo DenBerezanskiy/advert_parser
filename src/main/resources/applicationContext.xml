@@ -43,7 +43,7 @@
     </bean>
     <bean id="botService" class="ua.dp.advertParser.bot.BotService" lazy-init="true"/>
     <bean id="bot" class="ua.dp.advertParser.bot.Bot" lazy-init="true">
-    <property name="botService" ref="botService"/>
+        <property name="botService" ref="botService"/>
     </bean>
 
     <!-- JPA & Hibernate configs -->

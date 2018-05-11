@@ -78,7 +78,6 @@ public class Parser
                 advert.setPrice(price);
             }
         }
-        
         return advert;
     }
     

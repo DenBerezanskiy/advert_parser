@@ -29,9 +29,11 @@ public class Advert
     @OneToOne
     @JoinColumn(name = "username")
     private User user;
+    
     public Advert() { }
     
-    public Advert(String url, String title, String price, Search search,User user) {
+    public Advert(String url, String title, String price, Search search, User user)
+    {
         this.url = url;
         this.title = title;
         this.price = price;
@@ -49,7 +51,8 @@ public class Advert
         this.user = user;
     }
     
-    public Search getSearch() {
+    public Search getSearch()
+    {
         return search;
     }
     
