@@ -30,7 +30,7 @@
     <h1>Get Started</h1>
     <p>To begin using parser:</p>
 
-        <p><a href="https://t.me/advert_parser_bot" style="color: beige">Start a conversation with bot</a> </p>
+        <p><a target="_blank" href="https://t.me/advert_parser_bot" style="color: beige">Start a conversation with bot</a> </p>
         <p>Insert into search field prepared link with olx search parameters</p>
 
     <p style="color: green">${message}</p>
